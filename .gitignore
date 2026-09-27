@@ -1,0 +1,17 @@
+.venv/
+.vscode/
+tempCodeRunner*
+__pycache__/
+.ipynb_checkpoints
+
+*.log
+.sixth/
+.claude/
+CLAUDE.md
+.pyc
+temp*
+tmp_*
+tmp/
+temp/
+Report/
+Draft Report/
