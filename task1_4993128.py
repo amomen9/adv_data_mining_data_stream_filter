@@ -32,7 +32,12 @@ def reservoir_sampling(k, datastream):
         # Note that the sample array size should not exceed k
 
         # BEGIN IMPLEMENTATION
-
+        if len(sample)<k:
+            sample.append(transaction)
+        else:
+            i=random.randint(0,index)
+            if i<k:
+                sample[i]=transaction
         # END IMPLEMENTATION
 
     return sample

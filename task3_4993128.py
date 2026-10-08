@@ -24,7 +24,12 @@ class FlajoletMartin:
         trailing_zeros_count = 0
 
         # BEGIN IMPLEMENTATION
-
+        binary_conv=bin(x)[2:]      # 0b at the beginning removed
+        for bits in reversed(binary_conv):
+            if bits=='0':
+                trailing_zeros_count+=1
+            else:
+                break
         # END IMPLEMENTATION
 
         return trailing_zeros_count
@@ -38,7 +43,10 @@ class FlajoletMartin:
             #       Update the maximum trailing zero value of the current hash function
 
             # BEGIN IMPLEMENTATION
-
+            hashed=self.hash_function(item,i)
+            num_trailing_zeros=self.count_trailing_zeros(hashed)
+            if num_trailing_zeros>self.max_trailing_zeros[i]:
+                self.max_trailing_zeros[i]=num_trailing_zeros
             # END IMPLEMENTATION
 
 

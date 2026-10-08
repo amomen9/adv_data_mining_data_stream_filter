@@ -21,7 +21,7 @@ def create_hash_functions(num_hash_functions, size_bit_array):
         # note that this should be a unique hash function for all
 
         # BEGIN IMPLEMENTATION
-
+        hash_functions.append(lambda x,i=i: int(sha256(f"{i}{x}".encode()).hexdigest(),16)% size_bit_array)
         # END IMPLEMENTATION
 
     return hash_functions
@@ -40,7 +40,9 @@ def add_to_bloom_filter(bloom_filter, hash_functions, bank_account):
     """
 
     # BEGIN IMPLEMENTATION
-
+    for hash_function in hash_functions:
+        account_hash= hash_function(bank_account)
+        bloom_filter[account_hash]= 1
     # END IMPLEMENTATION
 
     return bloom_filter
@@ -58,7 +60,10 @@ def check_bloom_filter(bloom_filter, hash_functions, bank_account):
     """
 
     # BEGIN IMPLEMENTATION
-
+    for hash_function in hash_functions:
+        account_hash= hash_function(bank_account)
+        if bloom_filter[account_hash]==0:
+            return False
     # END IMPLEMENTATION
 
     return True
